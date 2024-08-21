@@ -1,0 +1,46 @@
+
+services:
+  framework:
+    image: valid-framework-image
+    ports:
+      - "8000:8000"
+    environment:
+      - FRAMEWORK_ENV=production
+    networks:
+      - rag_network
+
+  
+  llm1:
+    image: valid-llm-image
+    ports:
+      - "8500:8500"
+    networks:
+      - rag_network
+  
+  llm2:
+    image: valid-llm-image
+    ports:
+      - "8501:8501"
+    networks:
+      - rag_network
+  
+
+  
+  vector_db1:
+    image: valid-db-image
+    ports:
+      - "8600:8600"
+    networks:
+      - rag_network
+  
+  vector_db2:
+    image: valid-db-image
+    ports:
+      - "8601:8601"
+    networks:
+      - rag_network
+  
+
+networks:
+  rag_network:
+    driver: bridge
